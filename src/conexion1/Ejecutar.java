@@ -8,6 +8,7 @@ package conexion1;
 import com.istloja.conexionbd.Conexion1;
 import com.istloja.controlador.personabd;
 import com.istloja.modelo.Persona;
+import com.istloja.vistas.GestionPersona;
 
 /**
  *
@@ -17,25 +18,24 @@ public class Ejecutar {
 
     public static void main(String[] args) {
         personabd personabd = new personabd();
-        Persona persona = new Persona();
-        persona.setIdpersona(7);
-        persona.setCedula("1900681667");
-        persona.setNombre("Brayan");
-        persona.setApellido("Chamico");
-        persona.setDireccion("El Pangui");
-        persona.setCorreo("Brayan@gmail.com");
-        persona.setTelefono("0969736083");
-//            CREAR
-//        if (personabd.crearpersona(persona)) {
-//            System.out.println("Persona guardada");
+        GestionPersona gpersona = new GestionPersona();
+        gpersona.GestionPersona();
+//        Persona persona = new Persona();
+//        persona.setIdpersona(3);
+//        persona.setCedula("1900681667");
+//        persona.setNombre("Brayan Bladimir");
+//        persona.setApellido("medina");
+//        persona.setDireccion("El Pangui");
+//        persona.setCorreo("Brayan@gmail.com");
+//        persona.setTelefono("0968736083");
+//        personabd.actualizarpersona(persona);
+//
+//        if (personabd.actualizarpersona(persona)) {
+//            System.out.println("SE edito con exito");
 //        } else {
-//            System.out.println("Error al guardar");
+//            System.out.println("No se pudo editar");
 //        }
-//            ELIMINAR
-        if (personabd.eliminarpersona(persona)) {
-            System.out.println("pudo eliminar con exito");
-        } else {
-            System.out.println("no pudo eliminar");
-        }
+////    
+//    }
     }
 }

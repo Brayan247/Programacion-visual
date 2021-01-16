@@ -41,7 +41,7 @@ public class personabd {
         boolean eliminar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "DELETE  FROM `bdejercicio1` . `persona` where idpersona=`" + String.valueOf(persona.getIdpersona()) + "`";
+        String sql = "DELETE  FROM `bdejercicio1` . `persona` where `idpersona`= "+String.valueOf(persona.getIdpersona()) +"";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -61,7 +61,7 @@ public class personabd {
         boolean editar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "DELETE  FROM `bdejercicio1` . `persona` where idpersona=`" + String.valueOf(persona.getIdpersona()) + "`";
+        String sql = "DELETE  FROM `bdejercicio1` . `persona` WHERE (`idpersona`= '"+String.valueOf(persona.getIdpersona())+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -70,6 +70,26 @@ public class personabd {
             editar = true;
             stm.close();
             return editar;
+        } catch (Exception e) {
+            System.out.println("hubo algun error" + e.getMessage());
+
+        }
+        return false;
+    }
+    
+     public boolean actualizarpersona(Persona persona) {
+        boolean actualizar = false;
+        Statement stm = null;
+        Connection con = null;
+        String sql = "UPDATE `bdejercicio1`.`persona` SET `cedula = '" +persona.getCedula()+ "', `nombre` = '" + persona.getNombre() + "', `apellido = '" + persona.getApellido() + "',`dirreccion` = '" + persona.getDireccion() + "', `telefono` = '" + persona.getTelefono() + "' WHERE `(idpersona` ='"  + String.valueOf(persona.getIdpersona()) +  " ')";
+        try {
+            Conexion1 conexion = new Conexion1();
+            con = conexion.ConexionMysql();
+            stm = con.createStatement();
+            stm.execute(sql);
+            actualizar = true;
+            stm.close();
+            return actualizar;
         } catch (Exception e) {
             System.out.println("hubo algun error" + e.getMessage());
 
