@@ -18,24 +18,24 @@ public class Ejecutar {
 
     public static void main(String[] args) {
         personabd personabd = new personabd();
-        GestionPersona gpersona = new GestionPersona();
-        gpersona.GestionPersona();
-//        Persona persona = new Persona();
-//        persona.setIdpersona(3);
-//        persona.setCedula("1900681667");
-//        persona.setNombre("Brayan Bladimir");
-//        persona.setApellido("medina");
-//        persona.setDireccion("El Pangui");
-//        persona.setCorreo("Brayan@gmail.com");
-//        persona.setTelefono("0968736083");
-//        personabd.actualizarpersona(persona);
-//
-//        if (personabd.actualizarpersona(persona)) {
+//        GestionPersona gpersona = new GestionPersona();
+//        gpersona.GestionPersona();
+        Persona persona = new Persona();
+        persona.setIdpersona(1);
+        persona.setCedula("1900681667");
+        persona.setNombre("Brayan Bladimir");
+        persona.setApellido("medina");
+        persona.setDireccion("El Pangui");
+        persona.setCorreo("Brayan@gmail.com");
+        persona.setTelefono("0968736083");
+        System.out.println( personabd.obtenerpersonas());
+
+//        if (personabd.obtenerpersonas()) {
 //            System.out.println("SE edito con exito");
 //        } else {
 //            System.out.println("No se pudo editar");
 //        }
 ////    
-//    }
     }
+    
 }
