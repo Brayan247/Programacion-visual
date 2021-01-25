@@ -9,7 +9,8 @@ import com.istloja.conexionbd.Conexion1;
 import com.istloja.controlador.personabd;
 import com.istloja.modelo.Persona;
 import com.istloja.vistas.GestionPersona;
-
+import com.istloja.vistas.GestionPersonaV1;
+import com.istloja.utilidad.Utilidades;
 /**
  *
  * @author Ordenador
@@ -18,24 +19,18 @@ public class Ejecutar {
 
     public static void main(String[] args) {
         personabd personabd = new personabd();
-//        GestionPersona gpersona = new GestionPersona();
-//        gpersona.GestionPersona();
+        String correo ="brayanchamico2014@gmail.com";
+        String telefono = "0969736083";
         Persona persona = new Persona();
-        persona.setIdpersona(1);
-        persona.setCedula("1900681667");
-        persona.setNombre("Brayan Bladimir");
-        persona.setApellido("medina");
-        persona.setDireccion("El Pangui");
-        persona.setCorreo("Brayan@gmail.com");
-        persona.setTelefono("0968736083");
-        System.out.println( personabd.obtenerpersonas());
-
-//        if (personabd.obtenerpersonas()) {
-//            System.out.println("SE edito con exito");
-//        } else {
-//            System.out.println("No se pudo editar");
-//        }
-////    
+//        persona.setIdpersona(1);
+//        persona.setCedula("1900681667");
+//        persona.setNombre("Brayan Bladimir");
+//        persona.setApellido("medina");
+//        persona.setDireccion("El Pangui");
+//        persona.setCorreo("Brayan@gmail.com");
+//        persona.setTelefono("0968736083");
+//        System.out.println(persona);
+  
     }
     
 }

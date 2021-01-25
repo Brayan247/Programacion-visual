@@ -14,6 +14,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Ordenador
+ */
 public class personabd {
 
     public boolean crearpersona(Persona persona) {

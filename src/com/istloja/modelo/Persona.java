@@ -7,6 +7,11 @@ package com.istloja.modelo;
 
 
 public class Persona {
+
+    @Override
+    public String toString() {
+        return "Persona{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + '}';
+    }
     
     private int idpersona;
     private String cedula;
