@@ -44,7 +44,7 @@ public class personabd {
         boolean eliminar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "DELETE FROM `ejercicio`.`persona` WHERE (`idpersona` = '" + String.valueOf(persona.getIdpersona()) +"');";
+        String sql = "DELETE FROM `ejercicio`.`persona` WHERE (`idpersona` = '" + String.valueOf(persona.getIdpersona()) + "');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -79,7 +79,7 @@ public class personabd {
         }
         return false;
     }
-    
+
     public List<Persona> obtenerpersonas() {
         Connection co = null;
         Statement stm = null;
@@ -106,10 +106,106 @@ public class personabd {
             rs.close();
             co.close();
         } catch (SQLException e) {
-            System.out.println("Error:"+ e.getMessage());
+            System.out.println("Error:" + e.getMessage());
         }
 
         return listaPersonas;
     }
 
+    public Persona getPersonaCedula(String cedula) {
+        Connection co = null;
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSet rs = null;
+        Persona c = null;
+        String sql = "SELECT * FROM bdejercicio1.persona where cedula like " + cedula + ";";
+        try {
+            co = new Conexion1().ConexionMysql();
+            stm = co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                c = new Persona();
+                c.setIdpersona(rs.getInt(1));
+                c.setCedula(rs.getString(2));
+                c.setNombre(rs.getString(3));
+                c.setApellido(rs.getString(4));
+                c.setDireccion(rs.getString(5));
+                c.setTelefono(rs.getString(6));
+                c.setCorreo(rs.getString(7));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        return c;
+    }
+        public Persona getPersonaTelefono(String telefono) {
+        Connection co = null;
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSet rs = null;
+        Persona c = null;
+        String sql = "SELECT * FROM bdejercicio1.persona where telefono = " + telefono + ";";
+        try {
+            co = new Conexion1().ConexionMysql();
+            stm = co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                c = new Persona();
+                c.setIdpersona(rs.getInt(1));
+                c.setCedula(rs.getString(2));
+                c.setNombre(rs.getString(3));
+                c.setApellido(rs.getString(4));
+                c.setDireccion(rs.getString(5));
+                c.setTelefono(rs.getString(6));
+                c.setCorreo(rs.getString(7));;
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        return c;
+    }
+        public boolean eliminarcontelefono(String telefono) {
+        boolean eliminar = false;
+        Statement stm = null;
+        Connection con = null;
+        String sql = "DELETE FROM bdejercicio1.persona WHERE telefono = " + telefono+ ";";
+        try {
+            Conexion1 conexion = new Conexion1();
+            con = conexion.ConexionMysql();
+            stm = con.createStatement();
+            stm.executeUpdate(sql);
+            eliminar = true;
+            stm.close();
+            return eliminar;
+        } catch (Exception e) {
+            System.out.println("hubo algun error" + e.getMessage());
+
+        }
+        return false;
+    }
+       public boolean actualizarcontelefono(Persona persona, String telefono) {
+        boolean editar = false;
+        Statement stm = null;
+        Connection con = null;
+        String sql = "UPDATE `bdejercicio1`.`persona` SET `cedula` = '" + persona.getCedula() + "', `nombre` = '" + persona.getNombre() + "', `apellido` = '" + persona.getApellido() + "', `direccion` = '" + persona.getDireccion() + "', `correo` = '" + persona.getCorreo() + "', `telefono` = '" + persona.getTelefono() + "' WHERE (`telefono` = '" + telefono + "');";
+        try {
+            Conexion1 conexion = new Conexion1();
+            con = conexion.ConexionMysql();
+            stm = con.createStatement();
+            stm.executeUpdate(sql);
+            editar = true;
+            stm.close();
+            return editar;
+        } catch (Exception e) {
+            System.out.println("hubo algun error" + e.getMessage());
+
+        }
+        return false;
+    }
 }
