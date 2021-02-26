@@ -141,7 +141,8 @@ public class personabd {
         }
         return c;
     }
-        public Persona getPersonaTelefono(String telefono) {
+
+    public Persona getPersonaTelefono(String telefono) {
         Connection co = null;
         Statement stm = null;
         //Sentencia de JDBC para obtener valores de la base de datos.
@@ -170,11 +171,12 @@ public class personabd {
         }
         return c;
     }
-        public boolean eliminarcontelefono(String telefono) {
+
+    public boolean eliminarcontelefono(String telefono) {
         boolean eliminar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "DELETE FROM bdejercicio1.persona WHERE telefono = " + telefono+ ";";
+        String sql = "DELETE FROM bdejercicio1.persona WHERE telefono = " + telefono + ";";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -189,23 +191,5 @@ public class personabd {
         }
         return false;
     }
-       public boolean actualizarcontelefono(Persona persona, String telefono) {
-        boolean editar = false;
-        Statement stm = null;
-        Connection con = null;
-        String sql = "UPDATE `bdejercicio1`.`persona` SET `cedula` = '" + persona.getCedula() + "', `nombre` = '" + persona.getNombre() + "', `apellido` = '" + persona.getApellido() + "', `direccion` = '" + persona.getDireccion() + "', `correo` = '" + persona.getCorreo() + "', `telefono` = '" + persona.getTelefono() + "' WHERE (`telefono` = '" + telefono + "');";
-        try {
-            Conexion1 conexion = new Conexion1();
-            con = conexion.ConexionMysql();
-            stm = con.createStatement();
-            stm.executeUpdate(sql);
-            editar = true;
-            stm.close();
-            return editar;
-        } catch (Exception e) {
-            System.out.println("hubo algun error" + e.getMessage());
 
-        }
-        return false;
-    }
 }
