@@ -5,26 +5,43 @@
  */
 package com.istloja.modelo;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class Persona {
 
-    @Override
-    public String toString() {
-        return "Persona{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + '}';
-    }
-    
     private int idpersona;
     private String cedula;
     private String nombre;
     private String apellido;
     private String direccion;
-    private String correo;
     private String telefono;
+    private String correo;
+    private Date fecharegistro;
+    private int genero;
+
+    public Persona(int idpersona, String cedula, String nombre, String apellido, String direccion, String telefono, String correo, Date fecharegistro, int genero) {
+        this.idpersona = idpersona;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.fecharegistro = fecharegistro;
+        this.genero = genero;
+    }
+
+    public DateTimeFormatter fechaderegistro() {
+       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+       return dtf;
+    }
 
     public Persona() {
     }
-    
-    
 
     public int getIdpersona() {
         return idpersona;
@@ -82,8 +99,25 @@ public class Persona {
         this.telefono = telefono;
     }
 
-   
+    public Date getFecharegistro() {
+        return fecharegistro;
+    }
 
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
+    }
 
-    
+    public int getGenero() {
+        return genero;
+    }
+
+    public void setGenero(int genero) {
+        this.genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "idpersona=" + idpersona + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + ", fecharegistro=" + fecharegistro + ", genero=" + genero + '}';
+    }
+
 }

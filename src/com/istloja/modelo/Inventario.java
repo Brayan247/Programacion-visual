@@ -1,6 +1,8 @@
 
 package com.istloja.modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Ordenador
@@ -9,20 +11,42 @@ public class Inventario {
     private int idInventario;
     private String codigoProducto ;
     private String descripcion;
-    private String precioCompra ;
-    private String precioVenta;
     private String cantidadProductos;
+    private Date fechaRegistro;
+    private Date fechaActualizacion;
+    private Date fechaCaducidad;
+    private double precioCompraSinIVA;
+    private double PrecioCompraConIV;
+    private double precioMayorista;
+    private double precioClienteFijo;
+    private double precioClienteNormal;
 
-    public Inventario() {
-    }
-
-    public Inventario(int idInventario, String codigoProducto, String descripcion, String precioCompra, String precioVenta, String cantidadProductos) {
+    public Inventario(int idInventario, String codigoProducto, String descripcion, String cantidadProductos, Date fechaRegistro, Date fechaActualizacion, Date fechaCaducidad, double precioCompraSinIVA, double PrecioCompraConIV, double precioMayorista, double precioClienteFijo, double precioClienteNormal) {
         this.idInventario = idInventario;
         this.codigoProducto = codigoProducto;
         this.descripcion = descripcion;
-        this.precioCompra = precioCompra;
-        this.precioVenta = precioVenta;
         this.cantidadProductos = cantidadProductos;
+        this.fechaRegistro = fechaRegistro;
+        this.fechaActualizacion = fechaActualizacion;
+        this.fechaCaducidad = fechaCaducidad;
+        this.precioCompraSinIVA = precioCompraSinIVA;
+        this.PrecioCompraConIV = PrecioCompraConIV;
+        this.precioMayorista = precioMayorista;
+        this.precioClienteFijo = precioClienteFijo;
+        this.precioClienteNormal = precioClienteNormal;
+    }
+
+    
+    public Inventario() {
+    }
+    
+    public Date fechaderegistro(){
+        fechaRegistro = new Date(fechaRegistro.getYear(),fechaRegistro.getMonth(),fechaRegistro.getDay());
+        return fechaRegistro;
+    }
+    public Date fechadeActualizacion(){
+        fechaActualizacion = new Date(fechaActualizacion.getYear(),fechaActualizacion.getMonth(),fechaActualizacion.getDay());
+        return fechaActualizacion;
     }
 
     public int getIdInventario() {
@@ -49,22 +73,6 @@ public class Inventario {
         this.descripcion = descripcion;
     }
 
-    public String getPrecioCompra() {
-        return precioCompra;
-    }
-
-    public void setPrecioCompra(String precioCompra) {
-        this.precioCompra = precioCompra;
-    }
-
-    public String getPrecioVenta() {
-        return precioVenta;
-    }
-
-    public void setPrecioVenta(String precioVenta) {
-        this.precioVenta = precioVenta;
-    }
-
     public String getCantidadProductos() {
         return cantidadProductos;
     }
@@ -73,7 +81,73 @@ public class Inventario {
         this.cantidadProductos = cantidadProductos;
     }
 
-    
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
 
-   
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public Date getFechaCaducidad() {
+        return fechaCaducidad;
+    }
+
+    public void setFechaCaducidad(Date fechaCaducidad) {
+        this.fechaCaducidad = fechaCaducidad;
+    }
+
+    public double getPrecioCompraSinIVA() {
+        return precioCompraSinIVA;
+    }
+
+    public void setPrecioCompraSinIVA(double precioCompraSinIVA) {
+        this.precioCompraSinIVA = precioCompraSinIVA;
+    }
+
+    public double getPrecioCompraConIV() {
+        return PrecioCompraConIV;
+    }
+
+    public void setPrecioCompraConIV(double PrecioCompraConIV) {
+        this.PrecioCompraConIV = PrecioCompraConIV;
+    }
+
+    public double getPrecioMayorista() {
+        return precioMayorista;
+    }
+
+    public void setPrecioMayorista(double precioMayorista) {
+        this.precioMayorista = precioMayorista;
+    }
+
+    public double getPrecioClienteFijo() {
+        return precioClienteFijo;
+    }
+
+    public void setPrecioClienteFijo(double precioClienteFijo) {
+        this.precioClienteFijo = precioClienteFijo;
+    }
+
+    public double getPrecioClienteNormal() {
+        return precioClienteNormal;
+    }
+
+    public void setPrecioClienteNormal(double precioClienteNormal) {
+        this.precioClienteNormal = precioClienteNormal;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventario{" + "idInventario=" + idInventario + ", codigoProducto=" + codigoProducto + ", descripcion=" + descripcion + ", cantidadProductos=" + cantidadProductos + ", fechaRegistro=" + fechaRegistro + ", fechaActualizacion=" + fechaActualizacion + ", fechaCaducidad=" + fechaCaducidad + ", precioCompraSinIVA=" + precioCompraSinIVA + ", PrecioCompraConIV=" + PrecioCompraConIV + ", precioMayorista=" + precioMayorista + ", precioClienteFijo=" + precioClienteFijo + ", precioClienteNormal=" + precioClienteNormal + '}';
+    }
+    
 }

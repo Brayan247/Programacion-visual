@@ -5,6 +5,8 @@
  */
 package com.istloja.modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Ordenador
@@ -19,8 +21,10 @@ public class Proveedores {
     private String ApellidosRepresentanteLegal;
     private String telefono;
     private String correo;
+    private String direccion;
+    private Date fecharegistro;
 
-    public Proveedores(int idProveedores, String ruc, String razonSocial, String tipoActividad, String nombreRepresentanteLegal, String ApellidosRepresentanteLegal, String telefono, String correo) {
+    public Proveedores(int idProveedores, String ruc, String razonSocial, String tipoActividad, String nombreRepresentanteLegal, String ApellidosRepresentanteLegal, String telefono, String correo, String direccion, Date fecharegistro) {
         this.idProveedores = idProveedores;
         this.ruc = ruc;
         this.razonSocial = razonSocial;
@@ -29,6 +33,13 @@ public class Proveedores {
         this.ApellidosRepresentanteLegal = ApellidosRepresentanteLegal;
         this.telefono = telefono;
         this.correo = correo;
+        this.direccion = direccion;
+        this.fecharegistro = fecharegistro;
+    }
+
+    public Date fechaderegistro() {
+        fecharegistro = new Date(fecharegistro.getYear(), fecharegistro.getMonth(), fecharegistro.getDay());
+        return fecharegistro;
     }
 
     public Proveedores() {
@@ -97,5 +108,26 @@ public class Proveedores {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Date getFecharegistro() {
+        return fecharegistro;
+    }
+
+    public void setFecharegistro(Date fecharegistro) {
+        this.fecharegistro = fecharegistro;
+    }
+
+    @Override
+    public String toString() {
+        return "Proveedores{" + "idProveedores=" + idProveedores + ", ruc=" + ruc + ", razonSocial=" + razonSocial + ", tipoActividad=" + tipoActividad + ", nombreRepresentanteLegal=" + nombreRepresentanteLegal + ", ApellidosRepresentanteLegal=" + ApellidosRepresentanteLegal + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + ", fecharegistro=" + fecharegistro + '}';
+    }
+
 }

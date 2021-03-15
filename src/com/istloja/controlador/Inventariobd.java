@@ -19,7 +19,7 @@ public class Inventariobd {
         boolean registrar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "INSERT INTO `bdejercicio1`.`inventario` (`Id_Inventario`, `codigo_prod`, `descripcion`, `Precios_compra`, `precio_venta`, `can_productos`) VALUES ('" + String.valueOf(producto.getIdInventario()) + "', '" + producto.getCodigoProducto() + "', '" + producto.getDescripcion() + "', '" + producto.getPrecioCompra() + "', '" + producto.getPrecioVenta() + "', '" + String.valueOf(producto.getCantidadProductos()) + "');";
+        String sql = "INSERT INTO `bdejercicio1`.`inventario` (`Id_Inventario`, `codigo_prod`, `descripcion`, `can_productos`, `fecha_registro`, `fecha_actualizacion`, `fecha_caducidad`, `precio_compra_sin_iva`, `precio_compra_con_iva`, `precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`) VALUES ('"+String.valueOf(producto.getIdInventario())+"', '"+producto.getCodigoProducto()+"', '"+producto.getDescripcion()+"', '"+producto.getCantidadProductos()+"', '"+producto.fechaderegistro()+"', '"+producto.fechadeActualizacion()+"', '"+producto.getFechaCaducidad()+"', '"+producto.getPrecioCompraSinIVA()+"', '"+producto.getPrecioCompraConIV()+"', '"+producto.getPrecioMayorista()+"', '"+producto.getPrecioClienteFijo()+"', '"+producto.getPrecioClienteNormal()+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -39,7 +39,7 @@ public class Inventariobd {
         boolean eliminar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "DELETE FROM `bdejercicio1`.`inventario` WHERE (`Id_Inventario` = '" + String.valueOf(producto.getIdInventario()) + "');";
+        String sql = "DELETE FROM `bdejercicio1`.`inventario` WHERE (`Id_Inventario` = '"+String.valueOf(producto.getIdInventario())+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -59,7 +59,7 @@ public class Inventariobd {
         boolean editar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "UPDATE `bdejercicio1`.`inventario` SET  `codigo_prod` = '" + producto.getCodigoProducto() + "', `descripcion` = '" + producto.getDescripcion() + "', `Precios_compra` = '" + producto.getPrecioCompra() + "', `precio_venta` = '" + producto.getPrecioVenta() + "', `can_productos` = '" + producto.getCantidadProductos() + "' WHERE (`Id_Inventario` = '" + producto.getIdInventario() + "');";
+        String sql = "UPDATE `bdejercicio1`.`inventario` SET `descripcion` = '"+producto.getDescripcion()+"', `can_productos` = '"+producto.getCantidadProductos()+"', `fecha_actualizacion` = '"+producto.fechadeActualizacion()+"', `precio_compra_sin_iva` = '"+producto.getPrecioCompraSinIVA()+"', `precio_compra_con_iva` = '"+producto.getPrecioCompraConIV()+"', `precio_mayorista` = '"+producto.getPrecioMayorista()+"', `precio_cliente_fijo` = '"+producto.getPrecioClienteFijo()+"', `precio_cliente_normal` = '"+producto.getPrecioClienteNormal()+"' WHERE (`Id_Inventario` = '"+String.valueOf(producto.getIdInventario())+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -91,9 +91,15 @@ public class Inventariobd {
                 c.setIdInventario(rs.getInt(1));
                 c.setCodigoProducto(rs.getString(2));
                 c.setDescripcion(rs.getString(3));
-                c.setPrecioCompra(rs.getString(4));
-                c.setPrecioVenta(rs.getString(5));
-                c.setCantidadProductos(rs.getString(6));
+                c.setCantidadProductos(rs.getString(4));
+                c.setFechaRegistro(rs.getDate(5));
+                c.setFechaActualizacion(rs.getDate(6));
+                c.setFechaCaducidad(rs.getDate(7));
+                c.setPrecioCompraSinIVA(rs.getDouble(8));
+                c.setPrecioCompraConIV(rs.getDouble(9));
+                c.setPrecioMayorista(rs.getDouble(10));
+                c.setPrecioClienteFijo(rs.getDouble(11));
+                c.setPrecioClienteNormal(rs.getDouble(12));
                 listaInventario.add(c);
             }
             stm.close();
@@ -121,9 +127,15 @@ public class Inventariobd {
                 c.setIdInventario(rs.getInt(1));
                 c.setCodigoProducto(rs.getString(2));
                 c.setDescripcion(rs.getString(3));
-                c.setPrecioCompra(rs.getString(4));
-                c.setPrecioVenta(rs.getString(5));
-                c.setCantidadProductos(rs.getString(6));
+                c.setCantidadProductos(rs.getString(4));
+                c.setFechaRegistro(rs.getDate(5));
+                c.setFechaActualizacion(rs.getDate(6));
+                c.setFechaCaducidad(rs.getDate(7));
+                c.setPrecioCompraSinIVA(rs.getDouble(8));
+                c.setPrecioCompraConIV(rs.getDouble(9));
+                c.setPrecioMayorista(rs.getDouble(10));
+                c.setPrecioClienteFijo(rs.getDouble(11));
+                c.setPrecioClienteNormal(rs.getDouble(12));
                 listaInventario.add(c);
             }
             stm.close();
@@ -151,9 +163,15 @@ public class Inventariobd {
                 c.setIdInventario(rs.getInt(1));
                 c.setCodigoProducto(rs.getString(2));
                 c.setDescripcion(rs.getString(3));
-                c.setPrecioCompra(rs.getString(4));
-                c.setPrecioVenta(rs.getString(5));
-                c.setCantidadProductos(rs.getString(6));
+                c.setCantidadProductos(rs.getString(4));
+                c.setFechaRegistro(rs.getDate(5));
+                c.setFechaActualizacion(rs.getDate(6));
+                c.setFechaCaducidad(rs.getDate(7));
+                c.setPrecioCompraSinIVA(rs.getDouble(8));
+                c.setPrecioCompraConIV(rs.getDouble(9));
+                c.setPrecioMayorista(rs.getDouble(10));
+                c.setPrecioClienteFijo(rs.getDouble(11));
+                c.setPrecioClienteNormal(rs.getDouble(12));
                 listaInventario.add(c);
             }
             stm.close();
@@ -165,33 +183,4 @@ public class Inventariobd {
         return listaInventario;
     }
 
-    public Inventario getInventarioCodigo(String codigo) {
-        Connection co = null;
-        Statement stm = null;
-        //Sentencia de JDBC para obtener valores de la base de datos.
-        ResultSet rs = null;
-        Inventario c = null;
-        String sql = "SELECT * FROM bdejercicio1.inventario where codigo_prod = " + codigo + ";";
-        try {
-            co = new Conexion1().ConexionMysql();
-            stm = co.createStatement();
-            rs = stm.executeQuery(sql);
-            while (rs.next()) {
-                c = new Inventario();
-                c.setIdInventario(rs.getInt(1));
-                c.setCodigoProducto(rs.getString(2));
-                c.setDescripcion(rs.getString(3));
-                c.setPrecioCompra(rs.getString(4));
-                c.setPrecioVenta(rs.getString(5));
-                c.setCantidadProductos(rs.getString(6));
-            }
-            stm.close();
-            rs.close();
-            co.close();
-        } catch (SQLException e) {
-            System.out.println("Error:" + e.getMessage());
-        }
-
-        return c;
-    }
 }

@@ -24,7 +24,7 @@ public class Proveedoresbd {
         boolean registrar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "INSERT INTO `bdejercicio1`.`proveedores` (`ruc`, `razon_social`, `tipo_actividad`, `nombre_representante_legal`, `apellido_representante_legal`, `telefono`, `correo`) VALUES ('" + proveedor.getRuc() + "', '" + proveedor.getRazonSocial() + "', '" + proveedor.getTipoActividad() + "', '" + proveedor.getNombreRepresentanteLegal() + "', '" + proveedor.getApellidosRepresentanteLegal() + "', '" + proveedor.getTelefono() + "', '" + proveedor.getCorreo() + "');";
+        String sql = "INSERT INTO `bdejercicio1`.`proveedores` (`idProveedores`, `ruc`, `razonsocial`, `tipoActividad`, `nombreRepresentanteLegal`, `ApellidosRepresentanteLegal`, `telefono`, `correo`, `direccion`, `fecha_registro`) VALUES ('"+String.valueOf(proveedor.getIdProveedores())+"', '"+proveedor.getRuc()+"', '"+proveedor.getRazonSocial()+"', '"+proveedor.getTipoActividad()+"', '"+proveedor.getNombreRepresentanteLegal()+"', '"+proveedor.getApellidosRepresentanteLegal()+"', '"+proveedor.getTelefono()+"', '"+proveedor.getCorreo()+"', '"+proveedor.getDireccion()+"', '"+proveedor.fechaderegistro()+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -44,7 +44,7 @@ public class Proveedoresbd {
         boolean editar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "UPDATE `bdejercicio1`.`proveedores` SET `ruc` = '" + proveedor.getRuc() + "', `razon_social` = '" + proveedor.getRazonSocial() + "', `tipo_actividad` = '" + proveedor.getTipoActividad() + "', `nombre_representante_legal` = '" + proveedor.getNombreRepresentanteLegal() + "', `apellido_representante_legal` = '" + proveedor.getApellidosRepresentanteLegal() + "', `telefono` = '" + proveedor.getTelefono() + "', `correo` = '" + proveedor.getCorreo() + "' WHERE (`id_proveedores` = '" + proveedor.getIdProveedores() + "');";
+        String sql = "UPDATE `bdejercicio1`.`proveedores` SET `ruc` = '"+proveedor.getRuc()+"', `razonsocial` = '"+proveedor.getRazonSocial()+"', `tipoActividad` = '"+proveedor.getTipoActividad()+"', `nombreRepresentanteLegal` = '"+proveedor.getNombreRepresentanteLegal()+"', `ApellidosRepresentanteLegal` = '"+proveedor.getApellidosRepresentanteLegal()+"', `telefono` = '"+proveedor.getTelefono()+"', `correo` = '"+proveedor.getCorreo()+"', `direccion` = '"+proveedor.getDireccion()+"' WHERE (`idProveedores` = '"+String.valueOf(proveedor.getIdProveedores())+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -64,7 +64,7 @@ public class Proveedoresbd {
         Connection connect = null;
         Statement stm = null;
         boolean eliminar = false;
-        String sql = "DELETE FROM `bdejercicio1`.`proveedores` WHERE (`id_proveedores` = '" + proveedor.getIdProveedores() + "');";
+        String sql = "DELETE FROM `bdejercicio1`.`proveedores` WHERE (`idProveedores` = '"+String.valueOf(proveedor.getIdProveedores())+"');";
         try {
             connect = new Conexion1().ConexionMysql();
             stm = connect.createStatement();
@@ -97,6 +97,8 @@ public class Proveedoresbd {
                 c.setApellidosRepresentanteLegal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));
+                c.setFecharegistro(rs.getDate(10));
                 listaProveedores.add(c);
             }
             stm.close();
@@ -130,6 +132,8 @@ public class Proveedoresbd {
                 c.setApellidosRepresentanteLegal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));
+                c.setFecharegistro(rs.getDate(10));
                 listaProveedores.add(c);
             }
             stm.close();
@@ -162,6 +166,8 @@ public class Proveedoresbd {
                 c.setApellidosRepresentanteLegal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));
+                c.setFecharegistro(rs.getDate(10));
                 listaProveedores.add(c);
             }
             stm.close();
