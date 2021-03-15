@@ -5,6 +5,7 @@
  */
 package com.istloja.modelTables;
 
+import com.istloja.modelo.Inventario;
 import com.istloja.modelo.Persona;
 import com.istloja.vistas.GestionContable;
 import java.util.List;
@@ -15,22 +16,22 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Ordenador
  */
-public class ModelTablePersona extends AbstractTableModel {
+public class ModelTableInventario extends AbstractTableModel {
         //Arreglo con el nombre de las columnas
-     public String[] m_colNames = {"CÉDULA", "NOMBRE", "APELLIDO", "DIRECCIÓN", "TELEFONO", "CORREO"};
+     public String[] m_colNames = {"CODIGO PRODUCTO", "DESCRIPCION", "PRECIO COMPRA", "PRECIO VENTA", "CANTIDAD PRODUCTO"};
 
-    public List<Persona> personas;
+    public List<Inventario> inventario;
 
     private ComunicacionVistaModelosTablas comunicacionPersona;
     private GestionContable gestionContable;
-    public ModelTablePersona(List<Persona> personas,GestionContable gestionContable) {
-        this.personas = personas;
+    public ModelTableInventario(List<Inventario> inventario,GestionContable gestionContable) {
+        this.inventario = inventario;
         this.gestionContable = gestionContable;
     }
 
     @Override
     public int getRowCount() {
-        return personas.size();
+        return inventario.size();
     }
 
     @Override
@@ -39,20 +40,18 @@ public class ModelTablePersona extends AbstractTableModel {
     }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Persona persona = personas.get(rowIndex);
+        Inventario inventarios = inventario.get(rowIndex);
         switch (columnIndex){
             case 0:
-                return persona.getCedula();
+                return inventarios.getCodigoProducto();
             case 1:
-                return persona.getNombre();
+                return inventarios.getDescripcion();
             case 2:
-                return persona.getApellido();
+                return inventarios.getPrecioCompra();
             case 3:
-                return persona.getDireccion();
+                return inventarios.getPrecioVenta();
             case 4:
-                return persona.getCorreo();
-            case 5:
-                return persona.getTelefono();
+                return inventarios.getCantidadProductos();
         }
         return new String();
     }
@@ -62,17 +61,19 @@ public class ModelTablePersona extends AbstractTableModel {
 }
      @Override
      public boolean isCellEditable(int rowIndex, int columnIndex){
-        gestionContable.clickPersona(personas.get(rowIndex));
+        gestionContable.clickInventario(inventario.get(rowIndex));
         return super.isCellEditable(rowIndex, columnIndex);
      }
 
-    public List<Persona> getPersonas() {
-        return personas;
+    public List<Inventario> getInventario() {
+        return inventario;
     }
 
-    public void setPersonas(List<Persona> personas) {
-        this.personas = personas;
+    public void setInventario(List<Inventario> inventario) {
+        this.inventario = inventario;
     }
+
+
      
 }
 

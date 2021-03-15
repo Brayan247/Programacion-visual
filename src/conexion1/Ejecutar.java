@@ -9,7 +9,6 @@ import com.istloja.conexionbd.Conexion1;
 import com.istloja.controlador.personabd;
 import com.istloja.modelo.Persona;
 import com.istloja.vistas.GestionContable;
-import com.istloja.vistas.GestionPersona;
 import com.istloja.utilidad.Utilidades;
 /**
  *

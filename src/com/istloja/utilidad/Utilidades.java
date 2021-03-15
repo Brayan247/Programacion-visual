@@ -79,7 +79,7 @@ public class Utilidades {
     public boolean validarcorreo(String correo) {
         boolean verificador = false;
             for (int i = 0; i < correo.length(); i++) {
-                if (correo.charAt(i) == '@') {
+                if (correo.charAt(i) =='@') {
                     verificador = true;
                     return verificador;
                 }

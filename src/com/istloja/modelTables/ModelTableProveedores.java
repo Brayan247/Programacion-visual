@@ -5,7 +5,9 @@
  */
 package com.istloja.modelTables;
 
+import com.istloja.modelo.Inventario;
 import com.istloja.modelo.Persona;
+import com.istloja.modelo.Proveedores;
 import com.istloja.vistas.GestionContable;
 import java.util.List;
 import javax.swing.JFrame;
@@ -15,22 +17,22 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Ordenador
  */
-public class ModelTablePersona extends AbstractTableModel {
+public class ModelTableProveedores extends AbstractTableModel {
         //Arreglo con el nombre de las columnas
-     public String[] m_colNames = {"CÉDULA", "NOMBRE", "APELLIDO", "DIRECCIÓN", "TELEFONO", "CORREO"};
+     public String[] m_colNames = {"RUC", "RAZON SOCIAL", "TIPO ACTIVIDAD", "NOMBRE REPRESENTANTE LEGAL", "APELLIDO REPRESENTANTE LEGAL", "TELEFONO", "CORREO"};
 
-    public List<Persona> personas;
+    public List<Proveedores> provedores;
 
     private ComunicacionVistaModelosTablas comunicacionPersona;
     private GestionContable gestionContable;
-    public ModelTablePersona(List<Persona> personas,GestionContable gestionContable) {
-        this.personas = personas;
+    public ModelTableProveedores(List<Proveedores> proveedores,GestionContable gestionContable) {
+        this.provedores = proveedores;
         this.gestionContable = gestionContable;
     }
 
     @Override
     public int getRowCount() {
-        return personas.size();
+        return provedores.size();
     }
 
     @Override
@@ -39,20 +41,22 @@ public class ModelTablePersona extends AbstractTableModel {
     }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Persona persona = personas.get(rowIndex);
+        Proveedores provedor = provedores.get(rowIndex);
         switch (columnIndex){
             case 0:
-                return persona.getCedula();
+                return provedor.getRuc();
             case 1:
-                return persona.getNombre();
+                return provedor.getRazonSocial();
             case 2:
-                return persona.getApellido();
+                return provedor.getTipoActividad();
             case 3:
-                return persona.getDireccion();
+                return provedor.getNombreRepresentanteLegal();
             case 4:
-                return persona.getCorreo();
+                return provedor.getApellidosRepresentanteLegal();
             case 5:
-                return persona.getTelefono();
+                return provedor.getTelefono();
+            case 6:
+                return provedor.getCorreo();
         }
         return new String();
     }
@@ -62,17 +66,21 @@ public class ModelTablePersona extends AbstractTableModel {
 }
      @Override
      public boolean isCellEditable(int rowIndex, int columnIndex){
-        gestionContable.clickPersona(personas.get(rowIndex));
+        gestionContable.clickProveedores(provedores.get(rowIndex));
         return super.isCellEditable(rowIndex, columnIndex);
      }
 
-    public List<Persona> getPersonas() {
-        return personas;
+    public List<Proveedores> getProvedores() {
+        return provedores;
     }
 
-    public void setPersonas(List<Persona> personas) {
-        this.personas = personas;
+    public void setProvedores(List<Proveedores> provedores) {
+        this.provedores = provedores;
     }
+
+
+
+
      
 }
 
