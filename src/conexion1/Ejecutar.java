@@ -29,7 +29,8 @@ public class Ejecutar {
 //        persona.setCorreo("Brayan@gmail.com");
 //        persona.setTelefono("0968736083");
 //        System.out.println(persona);
-  
+          personabd.getNombreporCedula( persona, "1900681667");
+          
     }
     
 }

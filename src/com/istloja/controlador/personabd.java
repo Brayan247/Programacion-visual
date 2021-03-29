@@ -26,7 +26,7 @@ public class personabd {
         boolean registrar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "INSERT INTO `bdejercicio1`.`persona` (`idpersona`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `fecha_registro`, `genero`) VALUES ('"+String.valueOf(persona.getIdpersona())+"', '"+persona.getCedula()+"', '"+persona.getNombre()+"', '"+persona.getApellido()+"', '"+persona.getDireccion()+"', '"+persona.getTelefono()+"', '"+persona.getCorreo()+"', '"+persona.fechaderegistro()+"', '"+persona.getGenero()+"');";
+        String sql = "INSERT INTO `bdejercicio1`.`persona` (`idpersona`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `fecha_registro`, `genero`) VALUES ('" + String.valueOf(persona.getIdpersona()) + "', '" + persona.getCedula() + "', '" + persona.getNombre() + "', '" + persona.getApellido() + "', '" + persona.getDireccion() + "', '" + persona.getTelefono() + "', '" + persona.getCorreo() + "', '" + persona.fechaderegistro() + "', '" + persona.getGenero() + "');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -46,7 +46,7 @@ public class personabd {
         boolean eliminar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "DELETE FROM `bdejercicio1`.`persona` WHERE (`idpersona` = '"+String.valueOf(persona.getIdpersona())+"');";
+        String sql = "DELETE FROM `bdejercicio1`.`persona` WHERE (`idpersona` = '" + String.valueOf(persona.getIdpersona()) + "');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -66,7 +66,7 @@ public class personabd {
         boolean editar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "UPDATE `bdejercicio1`.`persona` SET `cedula` = '"+persona.getCedula()+"', `nombre` = '"+persona.getNombre()+"', `apellido` = '"+persona.getApellido()+"', `direccion` = '"+persona.getDireccion()+"', `telefono` = '"+persona.getTelefono()+"', `correo` = '"+persona.getCorreo()+"' WHERE (`idpersona` = '"+String.valueOf(persona.getIdpersona())+"');";
+        String sql = "UPDATE `bdejercicio1`.`persona` SET `cedula` = '" + persona.getCedula() + "', `nombre` = '" + persona.getNombre() + "', `apellido` = '" + persona.getApellido() + "', `direccion` = '" + persona.getDireccion() + "', `telefono` = '" + persona.getTelefono() + "', `correo` = '" + persona.getCorreo() + "' WHERE (`idpersona` = '" + String.valueOf(persona.getIdpersona()) + "');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -179,6 +179,28 @@ public class personabd {
             System.out.println("Error:" + e.getMessage());
         }
         return personasEncontradas;
+    }
+
+    public  Persona getNombreporCedula (Persona p, String Cedula) {
+        Connection co = null;
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSet rs = null;
+        String sql = "select * from bdejercicio1.persona where cedula ='"+Cedula+"';";
+        try {
+            co = new Conexion1().ConexionMysql();
+            rs = stm.executeQuery(sql);
+            p.setNombre(rs.getString("nombre"));
+            p.setDireccion(rs.getString("direccion"));
+            p.setTelefono(rs.getString("telefono"));
+            stm.close();
+            rs.close();
+            co.close();
+            return p;
+        } catch (Exception e) {
+            System.out.println("Hubo un error al buscar el nombre de la persona" + e);
+        }
+       return p;
     }
 
 }
