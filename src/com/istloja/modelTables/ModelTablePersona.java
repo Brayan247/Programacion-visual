@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ModelTablePersona extends AbstractTableModel {
         //Arreglo con el nombre de las columnas
-     public String[] m_colNames = {"CÉDULA", "NOMBRE", "APELLIDO", "DIRECCIÓN", "TELEFONO", "CORREO", "GENERO"};
+     public String[] m_colNames = {"CÉDULA", "NOMBRE", "APELLIDO", "DIRECCIÓN", "TELEFONO", "CORREO","FECHA REGISTRO", "GENERO", "FECHA NACIMIENTO"};
 
     public List<Persona> personas;
 
@@ -54,7 +54,11 @@ public class ModelTablePersona extends AbstractTableModel {
             case 5:
                 return persona.getTelefono();
             case 6:
+                return persona.getFecharegistro();
+            case 7:
                 return persona.getGenero();
+            case 8:
+                return persona.getFechanacimiento();
         }
         return new String();
     }

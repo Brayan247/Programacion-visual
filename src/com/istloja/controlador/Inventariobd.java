@@ -8,18 +8,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import com.istloja.utilidad.Utilidades;
 
 /**
  *
  * @author Ordenador
  */
 public class Inventariobd {
+    
+    public Utilidades utilidades;
+
+    public Inventariobd() {
+        utilidades = new Utilidades();
+    }
 
     public boolean GuardarInventario(Inventario producto) {
         boolean registrar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "INSERT INTO `bdejercicio1`.`inventario` (`Id_Inventario`, `codigo_prod`, `descripcion`, `can_productos`, `fecha_registro`, `fecha_actualizacion`, `fecha_caducidad`, `precio_compra_sin_iva`, `precio_compra_con_iva`, `precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`) VALUES ('"+String.valueOf(producto.getIdInventario())+"', '"+producto.getCodigoProducto()+"', '"+producto.getDescripcion()+"', '"+producto.getCantidadProductos()+"', '"+producto.fechaderegistro()+"', '"+producto.fechadeActualizacion()+"', '"+producto.getFechaCaducidad()+"', '"+producto.getPrecioCompraSinIVA()+"', '"+producto.getPrecioCompraConIV()+"', '"+producto.getPrecioMayorista()+"', '"+producto.getPrecioClienteFijo()+"', '"+producto.getPrecioClienteNormal()+"');";
+        String sql = "INSERT INTO `bdejercicio1`.`inventario` (`Id_Inventario`, `codigo_prod`, `descripcion`, `can_productos`, `fecha_registro`, `fecha_actualizacion`, `fecha_caducidad`, `precio_compra_sin_iva`, `precio_compra_con_iva`, `precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`) VALUES ('"+String.valueOf(producto.getIdInventario())+"', '"+producto.getCodigoProducto()+"', '"+producto.getDescripcion()+"', '"+producto.getCantidadProductos()+"', '"+producto.fechaderegistro()+"', '"+producto.fechadeActualizacion()+"', '"+utilidades.devolverFecha(producto.getFechaCaducidad())+"', '"+producto.getPrecioCompraSinIVA()+"', '"+producto.getPrecioCompraConIV()+"', '"+producto.getPrecioMayorista()+"', '"+producto.getPrecioClienteFijo()+"', '"+producto.getPrecioClienteNormal()+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();
@@ -182,5 +189,41 @@ public class Inventariobd {
         }
         return listaInventario;
     }
+    public Inventario ObtenerInventarioconId(int codigo) {
+        Connection co = null;
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSet rs = null;
+        Inventario c = null;
+        String sql = "SELECT * FROM bdejercicio1.inventario where codigo_prod like '%" + codigo + "%';";
+        try {
+            co = new Conexion1().ConexionMysql();
+            stm = co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                c = new Inventario();
+                c.setIdInventario(rs.getInt(1));
+                c.setCodigoProducto(rs.getString(2));
+                c.setDescripcion(rs.getString(3));
+                c.setCantidadProductos(rs.getString(4));
+                c.setFechaRegistro(rs.getDate(5));
+                c.setFechaActualizacion(rs.getDate(6));
+                c.setFechaCaducidad(rs.getDate(7));
+                c.setPrecioCompraSinIVA(rs.getDouble(8));
+                c.setPrecioCompraConIV(rs.getDouble(9));
+                c.setPrecioMayorista(rs.getDouble(10));
+                c.setPrecioClienteFijo(rs.getDouble(11));
+                c.setPrecioClienteNormal(rs.getDouble(12));
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        return c;
+    }
+    
+    
 
 }

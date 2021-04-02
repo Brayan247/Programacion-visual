@@ -6,10 +6,7 @@
 package com.istloja.modelo;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 
 public class Persona {
 
@@ -22,19 +19,11 @@ public class Persona {
     private String correo;
     private Date fecharegistro;
     private int genero;
+    private Date fechaactualizacion;
+    private Date fechanacimiento;
 
-    public Persona(int idpersona, String cedula, String nombre, String apellido, String direccion, String telefono, String correo, Date fecharegistro, int genero) {
-        this.idpersona = idpersona;
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.fecharegistro = fecharegistro;
-        this.genero = genero;
-    }
-
+   
+    
     public DateTimeFormatter fechaderegistro() {
        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
        return dtf;
@@ -115,9 +104,27 @@ public class Persona {
         this.genero = genero;
     }
 
+    public Date getFechaactualizacion() {
+        return fechaactualizacion;
+    }
+
+    public void setFechaactualizacion(Date fechaactualizacion) {
+        this.fechaactualizacion = fechaactualizacion;
+    }
+
+    public Date getFechanacimiento() {
+        return fechanacimiento;
+    }
+
+    public void setFechanacimiento(Date fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
+    }
+
     @Override
     public String toString() {
-        return "Persona{" + "idpersona=" + idpersona + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + ", fecharegistro=" + fecharegistro + ", genero=" + genero + '}';
+        return "Persona{" + "idpersona=" + idpersona + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + ", fecharegistro=" + fecharegistro + ", genero=" + genero + ", fechaactualizacion=" + fechaactualizacion + ", fechanacimiento=" + fechanacimiento + '}';
     }
+
+    
 
 }

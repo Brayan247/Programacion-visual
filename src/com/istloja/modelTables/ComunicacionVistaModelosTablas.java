@@ -17,4 +17,5 @@ public interface ComunicacionVistaModelosTablas {
     void clickInventario(Inventario p);
     void clickProveedores(Proveedores p);
     void clickTipoUsuario(TipoUsuario p);
+    void clickVentas(Inventario p);
 }

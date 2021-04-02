@@ -5,6 +5,8 @@
  */
 package com.istloja.utilidad;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -99,6 +101,11 @@ public class Utilidades {
         } else {
             System.out.println("El telefono empieza con 0");
         }
+    }
+    
+    public String devolverFecha(Date fecha) {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        return f.format(fecha);
     }
 
 }

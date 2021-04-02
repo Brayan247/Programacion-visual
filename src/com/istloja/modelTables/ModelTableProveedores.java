@@ -19,7 +19,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ModelTableProveedores extends AbstractTableModel {
         //Arreglo con el nombre de las columnas
-     public String[] m_colNames = {"RUC", "RAZON SOCIAL", "TIPO ACTIVIDAD", "NOMBRE REPRESENTANTE LEGAL", "APELLIDO REPRESENTANTE LEGAL","DIRECCION", "TELEFONO", "CORREO"};
+     public String[] m_colNames = {"RUC", "RAZON SOCIAL", "TIPO ACTIVIDAD", "NOMBRE REPRESENTANTE LEGAL", "APELLIDO REPRESENTANTE LEGAL","DIRECCION", "TELEFONO", "CORREO", "FECHA VENCIMIENTO DEUDA"};
 
     public List<Proveedores> provedores;
 
@@ -59,6 +59,8 @@ public class ModelTableProveedores extends AbstractTableModel {
                 return provedor.getTelefono();
             case 7:
                 return provedor.getCorreo();
+            case 8:
+                return provedor.getFechavencimientodeuda();
         }
         return new String();
     }
