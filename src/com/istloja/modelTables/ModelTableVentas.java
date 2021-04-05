@@ -41,13 +41,16 @@ public class ModelTableVentas extends AbstractTableModel {
         Inventario inventarios = inventario.get(rowIndex);
         switch (columnIndex){
             case 0:
-                return gestionContable.cantidadproductoVenta();
+                return inventarios.getCantidadProductos();
             case 1:
                 return inventarios.getDescripcion();
             case 2:
                 return inventarios.getPrecioClienteNormal();
             case 3:
-                return gestionContable.cantidadproductoVenta() * inventarios.getPrecioClienteNormal();            
+//                return gestionContable.cantidadproductoVenta() * inventarios.getPrecioClienteNormal();
+                return null;
+            case 4: 
+                return inventarios.getCodigoProducto();
         }
         return new String();
     }

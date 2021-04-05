@@ -189,7 +189,7 @@ public class Inventariobd {
         }
         return listaInventario;
     }
-    public Inventario ObtenerInventarioconId(int codigo) {
+    public Inventario ObtenerInventarioconId(String codigo) {
         Connection co = null;
         Statement stm = null;
         //Sentencia de JDBC para obtener valores de la base de datos.
