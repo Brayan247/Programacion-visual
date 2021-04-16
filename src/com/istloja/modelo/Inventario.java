@@ -1,7 +1,7 @@
 
 package com.istloja.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -20,6 +20,17 @@ public class Inventario {
     private double precioMayorista;
     private double precioClienteFijo;
     private double precioClienteNormal;
+    
+    //Atrubuto temporal
+    private int cantidadProductoenVenta;
+
+    public int getCantidadProductoenVenta() {
+        return cantidadProductoenVenta;
+    }
+
+    public void setCantidadProductoenVenta(int cantidadProductoenVenta) {
+        this.cantidadProductoenVenta = cantidadProductoenVenta;
+    }
 
     public Inventario(int idInventario, String codigoProducto, String descripcion, String cantidadProductos, Date fechaRegistro, Date fechaActualizacion, Date fechaCaducidad, double precioCompraSinIVA, double PrecioCompraConIV, double precioMayorista, double precioClienteFijo, double precioClienteNormal) {
         this.idInventario = idInventario;
@@ -40,15 +51,6 @@ public class Inventario {
     public Inventario() {
     }
     
-    public Date fechaderegistro(){
-        fechaRegistro = new Date(fechaRegistro.getYear(),fechaRegistro.getMonth(),fechaRegistro.getDay());
-        return fechaRegistro;
-    }
-    public Date fechadeActualizacion(){
-        fechaActualizacion = new Date(fechaActualizacion.getYear(),fechaActualizacion.getMonth(),fechaActualizacion.getDay());
-        return fechaActualizacion;
-    }
-
     public int getIdInventario() {
         return idInventario;
     }

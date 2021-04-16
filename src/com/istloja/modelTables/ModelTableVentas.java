@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package com.istloja.modelTables;
-
-import com.istloja.modelo.Inventario;
 import com.istloja.vistas.GestionContable;
+import com.istloja.modelo.ProductoNotaVenta;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -18,18 +17,18 @@ public class ModelTableVentas extends AbstractTableModel {
         //Arreglo con el nombre de las columnas
     public String[] m_colNames = {"CANTIDAD", "DESCRIPCION", "SUB TOTAL", "TOTAL"};
 
-    public List<Inventario> inventario;
+    public List<ProductoNotaVenta> productov;
 
     private ComunicacionVistaModelosTablas comunicacionPersona;
     private GestionContable gestionContable;
-    public ModelTableVentas(List<Inventario> inventario,GestionContable gestionContable) {
-        this.inventario = inventario;
+    public ModelTableVentas(List<ProductoNotaVenta> productosv,GestionContable gestionContable) {
+        this.productov = productosv;
         this.gestionContable = gestionContable;
     }
 
     @Override
     public int getRowCount() {
-        return inventario.size();
+        return productov.size();
     }
 
     @Override
@@ -38,19 +37,16 @@ public class ModelTableVentas extends AbstractTableModel {
     }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Inventario inventarios = inventario.get(rowIndex);
+        ProductoNotaVenta productos = productov.get(rowIndex);
         switch (columnIndex){
             case 0:
-                return inventarios.getCantidadProductos();
+                return productos.getCantidadProducto();
             case 1:
-                return inventarios.getDescripcion();
+                return productos.getDescripcion();
             case 2:
-                return inventarios.getPrecioClienteNormal();
+                return productos.getSubtotal();
             case 3:
-//                return gestionContable.cantidadproductoVenta() * inventarios.getPrecioClienteNormal();
-                return null;
-            case 4: 
-                return inventarios.getCodigoProducto();
+                return productos.getTotal();
         }
         return new String();
     }
@@ -60,17 +56,18 @@ public class ModelTableVentas extends AbstractTableModel {
 }
      @Override
      public boolean isCellEditable(int rowIndex, int columnIndex){
-        gestionContable.clickInventario(inventario.get(rowIndex));
+        gestionContable.clickProductoVentas(productov.get(rowIndex));
         return super.isCellEditable(rowIndex, columnIndex);
      }
 
-    public List<Inventario> getInventario() {
-        return inventario;
+    public List<ProductoNotaVenta> getProductov() {
+        return productov;
     }
 
-    public void setInventario(List<Inventario> inventario) {
-        this.inventario = inventario;
+    public void setProductov(List<ProductoNotaVenta> productov) {
+        this.productov = productov;
     }
+
 
 
      

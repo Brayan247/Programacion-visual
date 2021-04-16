@@ -7,6 +7,7 @@ package com.istloja.modelTables;
 import com.istloja.modelo.Inventario;
 import com.istloja.modelo.Persona;
 import com.istloja.modelo.Proveedores;
+import com.istloja.modelo.ProductoNotaVenta;
 import com.istloja.modelo.TipoUsuario;
 /**
  *
@@ -17,5 +18,5 @@ public interface ComunicacionVistaModelosTablas {
     void clickInventario(Inventario p);
     void clickProveedores(Proveedores p);
     void clickTipoUsuario(TipoUsuario p);
-    void clickVentas(Inventario p);
+    void clickProductoVentas(ProductoNotaVenta p);
 }

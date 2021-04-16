@@ -5,8 +5,8 @@
  */
 package com.istloja.modelo;
 
-import java.sql.Date;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Persona {
 

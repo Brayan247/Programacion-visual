@@ -33,9 +33,26 @@ public class personabd {
         Connection con = null;
         String sql;
         if(persona.getFechanacimiento() == null){
-         sql = "INSERT INTO `bdejercicio1`.`persona` (`idpersona`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `fecha_registro`, `genero`) VALUES ('" + String.valueOf(persona.getIdpersona()) + "', '" + persona.getCedula() + "', '" + persona.getNombre() + "', '" + persona.getApellido() + "', '" + persona.getDireccion() + "', '" + persona.getTelefono() + "', '" + persona.getCorreo() + "', '" + utilidades.devolverFecha(persona.getFecharegistro()) + "', '" + persona.getGenero() + "');";
+         sql = "INSERT INTO `bdejercicio1`.`persona` (`idpersona`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `fecha_registro`, `genero`) VALUES ('" + String.valueOf(persona.getIdpersona()) + "',"
+                 + " '" + persona.getCedula() + "',"
+                 + " '" + persona.getNombre() + "',"
+                 + " '" + persona.getApellido() + "',"
+                 + " '" + persona.getDireccion() + "',"
+                 + " '" + persona.getTelefono() + "',"
+                 + " '" + persona.getCorreo() + "',"
+                 + " '" + utilidades.devolverFecha(persona.getFecharegistro()) + "',"
+                 + " '" + persona.getGenero() + "');";
         }else{
-         sql = "INSERT INTO `bdejercicio1`.`persona` (`idpersona`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `fecha_registro`, `genero`, `fecha_nacimiento`) VALUES ('"+String.valueOf(persona.getIdpersona())+"', '"+persona.getCedula()+"', '"+persona.getNombre()+"', '"+persona.getApellido()+"', '"+persona.getDireccion()+"', '"+persona.getTelefono()+"', '"+persona.getCorreo()+"', '"+utilidades.devolverFecha(persona.getFecharegistro())+"', '"+persona.getGenero()+"', '1"+utilidades.devolverFecha(persona.getFechanacimiento())+"');";
+         sql = "INSERT INTO `bdejercicio1`.`persona` (`idpersona`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `fecha_registro`, `genero`, `fecha_nacimiento`) VALUES ('"+String.valueOf(persona.getIdpersona())+"',"
+                 + " '"+persona.getCedula()+"',"
+                 + " '"+persona.getNombre()+"',"
+                 + " '"+persona.getApellido()+"',"
+                 + " '"+persona.getDireccion()+"',"
+                 + " '"+persona.getTelefono()+"',"
+                 + " '"+persona.getCorreo()+"',"
+                 + " '"+utilidades.devolverFecha(persona.getFecharegistro())+"',"
+                 + " '"+persona.getGenero()+"',"
+                 + " '"+utilidades.devolverFecha(persona.getFechanacimiento())+"');";
         }
         try {
             Conexion1 conexion = new Conexion1();
@@ -76,7 +93,16 @@ public class personabd {
         boolean editar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "UPDATE `bdejercicio1`.`persona` SET `cedula` = '"+persona.getCedula()+"', `nombre` = '"+persona.getNombre()+"', `apellido` = '"+persona.getApellido()+"', `direccion` = '"+persona.getDireccion()+"', `telefono` = '"+persona.getTelefono()+"', `correo` = '"+persona.getCorreo()+"', `fecha_registro` = '"+utilidades.devolverFecha(persona.getFecharegistro())+"', `genero` = '"+persona.getGenero()+"', `fecha_actualizacion` = '"+utilidades.devolverFecha(persona.getFechaactualizacion())+"' WHERE (`idpersona` = '"+String.valueOf(persona.getCedula())+"');";
+        String sql = "UPDATE `bdejercicio1`.`persona` SET `cedula` = '"+persona.getCedula()+"',"
+                + " `nombre` = '"+persona.getNombre()+"',"
+                + " `apellido` = '"+persona.getApellido()+"',"
+                + " `direccion` = '"+persona.getDireccion()+"',"
+                + " `telefono` = '"+persona.getTelefono()+"',"
+                + " `correo` = '"+persona.getCorreo()+"',"
+                + " `fecha_registro` = '"+utilidades.devolverFecha(persona.getFecharegistro())+"',"
+                + " `genero` = '"+persona.getGenero()+"',"
+                + " `fecha_actualizacion` = '"+utilidades.devolverFecha(persona.getFechaactualizacion())+"'"
+                + " WHERE (`idpersona` = '"+String.valueOf(persona.getIdpersona())+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();

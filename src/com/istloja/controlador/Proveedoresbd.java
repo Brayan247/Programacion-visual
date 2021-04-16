@@ -31,7 +31,17 @@ public class Proveedoresbd {
         boolean registrar = false;
         Statement stm = null;
         Connection con = null;
-        String sql = "INSERT INTO `bdejercicio1`.`proveedores` (`idProveedores`, `ruc`, `razonsocial`, `tipoActividad`, `nombreRepresentanteLegal`, `ApellidosRepresentanteLegal`, `telefono`, `correo`, `direccion`, `fecha_registro`, 'fecha_vencimiento_deuda) VALUES ('"+String.valueOf(proveedor.getIdProveedores())+"', '"+proveedor.getRuc()+"', '"+proveedor.getRazonSocial()+"', '"+proveedor.getTipoActividad()+"', '"+proveedor.getNombreRepresentanteLegal()+"', '"+proveedor.getApellidosRepresentanteLegal()+"', '"+proveedor.getTelefono()+"', '"+proveedor.getCorreo()+"', '"+proveedor.getDireccion()+"', '"+utilidades.devolverFecha(proveedor.getFecharegistro())+"', '"+utilidades.devolverFecha(proveedor.getFechavencimientodeuda())+"'');";
+        String sql = "INSERT INTO `bdejercicio1`.`proveedores` (`idProveedores`, `ruc`, `razonsocial`, `tipoActividad`, `nombreRepresentanteLegal`, `ApellidosRepresentanteLegal`, `telefono`, `correo`, `direccion`, `fecha_registro`, `fecha_vencimiento_deuda`) VALUES ('"+String.valueOf(proveedor.getIdProveedores())+"',"
+                + " '"+proveedor.getRuc()+"',"
+                + " '"+proveedor.getRazonSocial()+"',"
+                + " '"+proveedor.getTipoActividad()+"',"
+                + " '"+proveedor.getNombreRepresentanteLegal()+"',"
+                + " '"+proveedor.getApellidosRepresentanteLegal()+"',"
+                + " '"+proveedor.getTelefono()+"',"
+                + " '"+proveedor.getCorreo()+"',"
+                + " '"+proveedor.getDireccion()+"',"
+                + " '"+utilidades.devolverFecha(proveedor.getFecharegistro())+"',"
+                + " '"+utilidades.devolverFecha(proveedor.getFechavencimientodeuda())+"');";
         try {
             Conexion1 conexion = new Conexion1();
             con = conexion.ConexionMysql();

@@ -107,5 +107,9 @@ public class Utilidades {
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         return f.format(fecha);
     }
+    
+    public double dosDecimales(double valor){
+        return Math.round(valor * 100.0)/100.0;
+    }
 
 }
